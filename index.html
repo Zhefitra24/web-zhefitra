@@ -1,0 +1,1344 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memori MPLS 2026 ✨</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Caveat:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Variabel Warna Tema Gelap Elegan */
+      :root {
+        --bg-dark: #0a0a0b;
+        --bg-card: #141417;
+        --text-main: #f3f4f6;
+        --text-muted: #9ca3af;
+        --accent-gold: #d4af37;
+        --accent-gold-dim: rgba(212, 175, 55, 0.2);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+      }
+      .gold-text {
+        color: var(--accent-gold);
+      }
+
+      /* Hero Section & Canvas Partikel */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+        background: radial-gradient(
+          circle at center,
+          #1a1a24 0%,
+          var(--bg-dark) 70%
+        );
+        position: relative;
+      }
+
+      #particles-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .hero h1,
+      .hero p {
+        z-index: 2;
+        position: relative;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        bottom: 40px;
+        width: 1px;
+        height: 60px;
+        background: linear-gradient(to bottom, var(--accent-gold), transparent);
+        animation: pulse 2s infinite;
+        z-index: 2;
+      }
+
+      @keyframes pulse {
+        0% {
+          opacity: 0.3;
+          transform: scaleY(0.8);
+        }
+        50% {
+          opacity: 1;
+          transform: scaleY(1);
+        }
+        100% {
+          opacity: 0.3;
+          transform: scaleY(0.8);
+        }
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        margin-bottom: 1rem;
+        letter-spacing: 1px;
+      }
+      .hero h1 i {
+        font-style: italic;
+        font-weight: 400;
+      }
+      .hero p {
+        font-size: 1.1rem;
+        color: var(--text-muted);
+        letter-spacing: 3px;
+        text-transform: uppercase;
+      }
+
+      main {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 4rem 1.5rem;
+      }
+      section {
+        margin-bottom: 8rem;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        position: relative;
+      }
+      .section-title::after {
+        content: "✧";
+        display: block;
+        color: var(--accent-gold);
+        font-size: 1.5rem;
+        margin-top: 0.5rem;
+      }
+
+      /* --- GALERI --- */
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 2.5rem 1.5rem;
+        justify-content: center;
+      }
+      .gallery-item {
+        position: relative;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        outline: none;
+      }
+      .gallery-item:hover {
+        transform: translateY(-10px);
+      }
+
+      .photo-stack {
+        position: relative;
+        width: 100%;
+        height: 250px;
+        margin-bottom: 1rem;
+      }
+      .photo-stack img,
+      .photo-stack video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 2px solid var(--accent-gold-dim);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        filter: grayscale(20%);
+      }
+
+      .photo-stack *:nth-child(1) {
+        transform: rotate(-8deg) translateX(-15px) scale(0.9);
+        z-index: 1;
+        opacity: 0.7;
+      }
+      .photo-stack *:nth-child(2) {
+        transform: rotate(5deg) translateX(15px) scale(0.95);
+        z-index: 2;
+        opacity: 0.85;
+      }
+      .photo-stack *:nth-child(3) {
+        transform: rotate(0deg) scale(1);
+        z-index: 3;
+      }
+
+      .gallery-item:hover .photo-stack * {
+        filter: grayscale(0%);
+        border-color: var(--accent-gold);
+      }
+      .gallery-item:hover .photo-stack *:nth-child(1) {
+        transform: rotate(-15deg) translateX(-30px) scale(0.9);
+      }
+      .gallery-item:hover .photo-stack *:nth-child(2) {
+        transform: rotate(12deg) translateX(30px) scale(0.95);
+      }
+      .gallery-item:hover .photo-stack *:nth-child(3) {
+        transform: translateY(-8px) scale(1.05);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+      }
+
+      .gallery-caption {
+        text-align: center;
+        background: var(--bg-card);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        position: relative;
+        z-index: 4;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+      .gallery-caption h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+      .gallery-caption p {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        font-weight: 300;
+      }
+
+      /* Modal Slider & Grid Baru */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(10, 10, 11, 0.98);
+        backdrop-filter: blur(8px);
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+        overflow-y: auto;
+        padding: 2rem;
+      }
+      .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto 2rem auto;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      }
+      .modal-header h2 {
+        color: var(--accent-gold);
+        font-size: 1.8rem;
+        margin: 0;
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 1rem;
+      }
+      .btn-action,
+      .btn-close {
+        background: transparent;
+        border: 1px solid var(--accent-gold);
+        color: var(--accent-gold);
+        padding: 0.5rem 1.2rem;
+        border-radius: 30px;
+        cursor: pointer;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+      }
+      .btn-action.active,
+      .btn-action:hover,
+      .btn-close:hover {
+        background: var(--accent-gold);
+        color: var(--bg-dark);
+      }
+
+      .modal-slider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 1000px;
+        width: 100%;
+        margin: 0 auto;
+        flex: 1;
+        position: relative;
+      }
+      .slider-media-container {
+        width: 100%;
+        height: 60vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .slider-media-container img,
+      .slider-media-container video {
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        object-fit: contain;
+        animation: fadeIn 0.4s ease;
+      }
+      .slider-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(20, 20, 23, 0.7);
+        border: 1px solid var(--accent-gold-dim);
+        color: var(--accent-gold);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .slider-nav:hover {
+        background: var(--accent-gold);
+        color: var(--bg-dark);
+      }
+      .slider-nav.prev {
+        left: 0;
+      }
+      .slider-nav.next {
+        right: 0;
+      }
+      .slide-counter {
+        position: absolute;
+        bottom: -30px;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .modal-grid {
+        display: none;
+        columns: 3 300px;
+        gap: 1.5rem;
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto 4rem auto;
+      }
+      .modal-grid .grid-item {
+        break-inside: avoid;
+        margin-bottom: 1.5rem;
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .modal-grid img,
+      .modal-grid video {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 12px;
+        border: 2px solid transparent;
+        transition: all 0.4s ease;
+      }
+      .modal-grid .grid-item:hover img,
+      .modal-grid .grid-item:hover video {
+        transform: scale(1.03);
+        border-color: var(--accent-gold);
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+      }
+
+      /* --- ROSTER (ANGGOTA) --- */
+      .roster-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 2.5rem 1rem;
+        text-align: center;
+      }
+      .roster-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.3s ease;
+      }
+      .roster-card:hover {
+        transform: translateY(-8px);
+      }
+      .roster-photo {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid var(--accent-gold-dim);
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+      }
+      .roster-card:hover .roster-photo {
+        border-color: var(--accent-gold);
+        box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
+      }
+      .roster-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(30%);
+        transition: filter 0.3s ease;
+      }
+      .roster-card:hover img {
+        filter: grayscale(0%);
+      }
+      .roster-card h4 {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--text-main);
+      }
+
+      /* KARTU PENDAMPING */
+      .greeting-card-container {
+        max-width: 700px;
+        margin: 0 auto;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        border: 2px solid var(--accent-gold-dim);
+        transition: all 0.4s ease;
+      }
+      .greeting-card-container:hover {
+        transform: translateY(-10px);
+        border-color: var(--accent-gold);
+      }
+      .greeting-card-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        filter: brightness(0.9);
+        transition: filter 0.4s ease;
+      }
+      .greeting-card-container:hover .greeting-card-img {
+        filter: brightness(1);
+      }
+      .social-container {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+      }
+      .social-link {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 0.9rem;
+        padding: 10px 20px;
+        border: 1px solid var(--accent-gold-dim);
+        border-radius: 30px;
+        transition: all 0.3s ease;
+      }
+      .social-link:hover {
+        color: var(--accent-gold);
+        border-color: var(--accent-gold);
+        background: rgba(212, 175, 55, 0.05);
+        transform: translateY(-3px);
+      }
+
+      /* PESAN DARI KAKAK (BARU) */
+      .personal-message-card {
+        max-width: 800px;
+        margin: 0 auto;
+        background: linear-gradient(
+          145deg,
+          rgba(20, 20, 23, 0.8) 0%,
+          rgba(10, 10, 11, 0.9) 100%
+        );
+        border: 1px solid var(--accent-gold-dim);
+        border-left: 4px solid var(--accent-gold);
+        padding: 3rem 2rem;
+        border-radius: 16px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: all 0.4s ease;
+      }
+      .personal-message-card:hover {
+        border-color: var(--accent-gold);
+        transform: translateY(-5px);
+      }
+      .personal-message-card p.id-text {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        color: #e5e7eb;
+        margin-bottom: 1.5rem;
+      }
+      .personal-message-card p.en-text {
+        font-family: "Playfair Display", serif;
+        font-size: 1.4rem;
+        color: var(--accent-gold);
+        font-style: italic;
+      }
+
+      footer {
+        text-align: center;
+        padding: 3rem 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        margin-top: 4rem;
+      }
+      footer span {
+        color: var(--accent-gold);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Floating Music Player */
+      .music-player {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        background: rgba(20, 20, 23, 0.9);
+        border: 1px solid var(--accent-gold);
+        padding: 10px 20px;
+        border-radius: 50px;
+        backdrop-filter: blur(10px);
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease;
+      }
+      .music-player:hover {
+        transform: scale(1.05);
+        background: var(--accent-gold);
+      }
+      .music-player:hover * {
+        color: var(--bg-dark);
+      }
+      .music-icon {
+        font-size: 1.2rem;
+        margin-right: 10px;
+        animation: pulse 2s infinite;
+      }
+      .music-text {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--accent-gold);
+        transition: all 0.3s ease;
+      }
+
+      /* Khusus untuk Modal Disclaimer saja */
+      #disclaimer-modal {
+        display: none; /* Sembunyi secara default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9); /* Hitam lebih gelap */
+        z-index: 99999; /* Paling depan */
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background: #141417; /* Sesuai tema gelapmu */
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+        color: #d4af37; /* Warna emas */
+        border: 1px solid #d4af37;
+        max-width: 300px;
+      }
+
+      .modal-content h3 {
+        margin-bottom: 10px;
+      }
+
+      .modal-content button {
+        background: #d4af37;
+        border: none;
+        padding: 10px 25px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-top: 15px;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Komponen Audio -->
+    <audio id="bg-audio" loop>
+      <source src="sampai jadi debu.mp3" type="audio/mpeg" />
+    </audio>
+    <div class="music-player" onclick="toggleMusic()" id="music-btn">
+      <span class="music-icon" id="music-icon">🎵</span>
+      <span class="music-text" id="music-text">Play Music</span>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+      <canvas id="particles-canvas"></canvas>
+      <h1>MPLS Memories</h1>
+      <h1>
+        <span class="gold-text"><i>X ANIMASI 1</i></span>
+      </h1>
+      <p>09 - 17 JUNI 2026</p>
+    </header>
+
+    <main>
+      <!-- GALERI -->
+      <section class="reveal">
+        <h2 class="section-title">
+          Kepingan <span class="gold-text">Memori</span>
+        </h2>
+        <div class="gallery">
+          <div
+            class="gallery-item"
+            onclick="openAlbum('sekelas', 'Album Foto Sekelas')"
+          >
+            <div class="photo-stack">
+              <img src="img/sekelas (1).webp" alt="Tumpukan 1" />
+              <img src="img/sekelas (2).webp" alt="Tumpukan 2" />
+              <img src="img/sekelas (3).webp" alt="Tumpukan Utama" />
+            </div>
+            <div class="gallery-caption">
+              <h3>Foto Sekelas</h3>
+              <p>
+                <span class="gold-text" style="font-size: 0.75rem"
+                  >(Klik buat buka album)</span
+                >
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="gallery-item"
+            onclick="openAlbum('idcard', 'Album ID Card Kalian')"
+          >
+            <div class="photo-stack">
+              <img src="img/b (3).webp" alt="Tumpukan 1" />
+              <img src="img/b (2).webp" alt="Tumpukan 2" />
+              <img src="img/b (1).webp" alt="Tumpukan Utama" />
+            </div>
+            <div class="gallery-caption">
+              <h3>ID Card Kalian</h3>
+              <p>
+                <span class="gold-text" style="font-size: 0.75rem"
+                  >(Klik buat buka album)</span
+                >
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="gallery-item"
+            onclick="showDisclaimer('video', 'Album Video Random')"
+          >
+            <div class="photo-stack">
+              <video
+                src="video (1).mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+              ></video>
+              <video
+                src="video (2).mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+              ></video>
+              <video
+                src="video (3).mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+              ></video>
+            </div>
+            <div class="gallery-caption">
+              <h3>Video Random</h3>
+              <p>
+                <span class="gold-text" style="font-size: 0.75rem"
+                  >(Klik buat buka album)</span
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ANGGOTA -->
+      <section class="reveal">
+        <h2 class="section-title">
+          Anggota <span class="gold-text">X ANIMASI 1</span>
+        </h2>
+        <div class="roster-grid">
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (20).webp" alt="ABIEL" />
+            </div>
+            <h4>ABIEL</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (10).webp" alt="ADITYA" />
+            </div>
+            <h4>ADITYA</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (7).webp" alt="RAMA" />
+            </div>
+            <h4>RAMA</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (5).webp" alt="AISYAH" />
+            </div>
+            <h4>AISYAH</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (8).webp" alt="AJENG" />
+            </div>
+            <h4>AJENG</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (3).webp" alt="AKMAL" />
+            </div>
+            <h4>AKMAL</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (26).webp" alt="ALVARO" />
+            </div>
+            <h4>ALVARO</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (4).webp" alt="AMEL" />
+            </div>
+            <h4>AMEL</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="" alt="ANANG " />
+            </div>
+            <h4>ANANG</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (2).webp" alt="SALSA" />
+            </div>
+            <h4>SALSA</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (19).webp" alt="APTA" />
+            </div>
+            <h4>APTA</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (31).webp" alt="ARDIAN" />
+            </div>
+            <h4>ARDIAN</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (16).webp" alt="AYU" />
+            </div>
+            <h4>AYU</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (11).webp" alt="BEKTI" />
+            </div>
+            <h4>BEKTI</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (23).webp" alt="BELLA" />
+            </div>
+            <h4>BELLA</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (9).webp" alt="BERLIANT" />
+            </div>
+            <h4>BERLIANT</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (18).webp" alt="BRIYANT" />
+            </div>
+            <h4>BRIYANT</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (30).webp" alt="CHERIL" />
+            </div>
+            <h4>CHERIL</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (34).webp" alt="ZAHRA" />
+            </div>
+            <h4>ZAHRA</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (24).webp" alt="DESY" />
+            </div>
+            <h4>DESY</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (29).webp" alt="DEVI" />
+            </div>
+            <h4>DEVI</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (17).webp" alt="DEVIKA" />
+            </div>
+            <h4>DEVIKA</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (32).webp" alt="DIMAS" />
+            </div>
+            <h4>DIMAS</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (27).webp" alt="DIRA" />
+            </div>
+            <h4>DIRA</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (6).webp" alt="ELANG" />
+            </div>
+            <h4>ELANG</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (15).webp" alt="EZA" />
+            </div>
+            <h4>EZA</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (21).webp" alt="FAHMI" />
+            </div>
+            <h4>FAHMI</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (22).webp" alt="FAUNDRA" />
+            </div>
+            <h4>FAUNDRA</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (25).webp" alt="RADIT" />
+            </div>
+            <h4>RADIT</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (33).webp" alt="FIRMAN" />
+            </div>
+            <h4>FIRMAN</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (1).webp" alt="GALUH" />
+            </div>
+            <h4>GALUH</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (13).webp" alt="DIKA" />
+            </div>
+            <h4>DIKA</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (28).webp" alt="HAFIZAH" />
+            </div>
+            <h4>HAFIZAH</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (14).webp" alt="HANIFA" />
+            </div>
+            <h4>HANIFA</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (12).webp" alt="ALDRI" />
+            </div>
+            <h4>ALDRI</h4>
+          </div>
+          <div class="roster-card">
+            <div class="roster-photo">
+              <img src="img/kalcer (35).webp" alt="DIO" />
+            </div>
+            <h4>DIO</h4>
+          </div>
+        </div>
+      </section>
+
+      <!-- KARTU PENDAMPING -->
+      <section class="reveal">
+        <h2 class="section-title">
+          Dari <span class="gold-text">Kak Zhefitra</span>
+        </h2>
+        <section class="reveal">
+          <div class="personal-message-card">
+            <p class="id-text">
+              "Halo adikk-adikk, Rasanya baru kemarin kita mulai MPLS, eh
+              sekarang udah selesai aja. Makasih ya udah semangat dan seru
+              selama kegiatan ini. <br />
+              Setelah ini masih banyak hal baru yang bakal kalian temuin. Ada
+              pelajaran yang susah, tugas yang numpuk, tapi juga bakal ada
+              banyak momen yang bikin kalian ketawa dan bangga sama diri
+              sendiri. <br />
+              Jangan takut buat mencoba, jangan minder sama orang lain, dan
+              tetap jadi versi terbaik dari diri kalian. Semoga kita bisa ketemu
+              lagi dengan cerita-cerita hebat dari kalian. Semangat terus!"
+            </p>
+            <p class="en-text">
+              "This is just the beginning. Enjoy every step of your journey."
+            </p>
+          </div>
+          <div class="social-container">
+            <a
+              href="https://instagram.com/ftraacihuy"
+              class="social-link"
+              target="_blank"
+              >Instagram</a
+            >
+            <a
+              href="https://wa.me/081515603869"
+              class="social-link"
+              target="_blank"
+              >WhatsApp</a
+            >
+            <a
+              href="https://tiktok.com/@fitrapp6"
+              class="social-link"
+              target="_blank"
+              >TikTok</a
+            >
+          </div>
+        </section>
+
+        <h2 class="section-title">
+          <span class="gold-text">Bonus</span>
+        </h2>
+        <div class="greeting-card-container">
+          <img
+            src="img/ucapan.webp"
+            alt="Kartu Ucapan Kakak Pendamping"
+            class="greeting-card-img"
+          />
+        </div>
+      </section>
+
+      <footer>
+        <p>Small Gift For X AN 1 <span>✧</span> 2026</p>
+      </footer>
+    </main>
+
+    <!-- Modal Slider / Grid -->
+    <div class="modal-overlay" id="album-modal">
+      <div class="modal-header">
+        <h2 id="modal-title">Judul Album</h2>
+        <div class="modal-actions">
+          <button
+            class="btn-action"
+            id="btn-toggle-view"
+            onclick="toggleGalleryView()"
+          >
+            Lihat Semua
+          </button>
+          <button class="btn-close" onclick="closeModal()">Tutup</button>
+        </div>
+      </div>
+
+      <div class="modal-slider" id="modal-slider">
+        <button class="slider-nav prev" onclick="changeSlide(-1)">
+          &#10094;
+        </button>
+        <div class="slider-media-container" id="slider-media"></div>
+        <button class="slider-nav next" onclick="changeSlide(1)">
+          &#10095;
+        </button>
+        <div class="slide-counter" id="slide-counter">1 / 10</div>
+      </div>
+
+      <div class="modal-grid" id="modal-grid"></div>
+    </div>
+
+    <!-- Modal Disclaimer -->
+    <div id="disclaimer-modal">
+      <div class="modal-content">
+        <h3>Disclaimer</h3>
+        <p>Semua video ini di posting secara privat.</p>
+        <button id="btn-lanjut" onclick="proceedToVideo()">Lanjut</button>
+      </div>
+    </div>
+
+    <script>
+      // Data Album
+      const albumData = {
+        sekelas: [
+          "img/sekelas (1).webp",
+          "img/sekelas (2).webp",
+          "img/sekelas (3).webp",
+          "img/sekelas (4).webp",
+          "img/sekelas (5).webp",
+          "img/sekelas (6).webp",
+          "img/sekelas (7).webp",
+          "img/sekelas (8).webp",
+          "img/sekelas (9).webp",
+          "img/sekelas (10).webp",
+          "img/sekelas (11).webp",
+          "img/sekelas (12).webp",
+          "img/sekelas (13).webp",
+          "img/sekelas (14).webp",
+          "img/sekelas (15).webp",
+          "img/sekelas (16).webp",
+          "img/sekelas (17).webp",
+          "img/sekelas (18).webp",
+          "img/sekelas (19).webp",
+          "img/sekelas (20).webp",
+          "img/sekelas (21).webp",
+          "img/sekelas (22).webp",
+          "img/sekelas (23).webp",
+          "img/sekelas (24).webp",
+          "img/sekelas (25).webp",
+          "img/sekelas (26).webp",
+        ],
+        idcard: [
+          "img/b (1).webp",
+          "img/b (2).webp",
+          "img/b (3).webp",
+          "img/b (4).webp",
+          "img/b (5).webp",
+          "img/b (6).webp",
+          "img/b (7).webp",
+          "img/b (8).webp",
+          "img/b (9).webp",
+          "img/b (10).webp",
+          "img/b (11).webp",
+          "img/b (12).webp",
+          "img/b (13).webp",
+          "img/b (14).webp",
+          "img/b (15).webp",
+          "img/b (16).webp",
+          "img/b (17).webp",
+          "img/b (18).webp",
+          "img/b (19).webp",
+          "img/b (20).webp",
+          "img/b (21).webp",
+          "img/b (22).webp",
+          "img/b (23).webp",
+          "img/b (24).webp",
+          "img/b (25).webp",
+          "img/b (26).webp",
+          "img/b (27).webp",
+          "img/b (28).webp",
+          "img/b (29).webp",
+          "img/b (30).webp",
+          "img/b (31).webp",
+          "img/b (32).webp",
+          "img/b (33).webp",
+          "img/b (34).webp",
+          "img/b (35).webp",
+          "img/b (36).webp",
+          "img/b (37).webp",
+        ],
+        // Ubah bagian video di albumData menjadi seperti ini:
+        video: [
+          "https://www.youtube.com/embed/UnTnkShgQ64?modestbranding=1&rel=0",
+          "https://www.youtube.com/embed/_K82N899H30?si=EjrM8D989L-ORFWw&modestbranding=1&rel=0",
+          "https://www.youtube.com/embed/GLYiPiiF8Nk?modestbranding=1&rel=0",
+        ],
+      };
+
+      let currentAlbum = [];
+      let currentIndex = 0;
+      let isGridView = false;
+
+      let pendingAlbumId = "";
+      let pendingTitle = "";
+
+      function showDisclaimer(albumId, title) {
+        console.log("Tombol diklik! Membuka disclaimer..."); // Tambahkan ini
+        pendingAlbumId = albumId;
+        pendingTitle = title;
+        document.getElementById("disclaimer-modal").style.display = "flex";
+      }
+
+      function proceedToVideo() {
+        document.getElementById("disclaimer-modal").style.display = "none";
+        openAlbum(pendingAlbumId, pendingTitle); // Membuka modal asli
+      }
+
+      function openAlbum(albumId, title) {
+        document.getElementById("modal-title").innerText = title;
+        currentAlbum = albumData[albumId];
+        currentIndex = 0;
+        isGridView = false;
+
+        document.getElementById("btn-toggle-view").innerText = "Lihat Semua";
+        document.getElementById("modal-slider").style.display = "flex";
+        document.getElementById("modal-grid").style.display = "none";
+
+        updateSlider();
+        document.getElementById("album-modal").classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function createMediaElement(url, isGridItem = false) {
+        // 1. Jika URL adalah YouTube
+        if (url.includes("youtube.com")) {
+          let container = document.createElement("div");
+          container.style.width = "100%";
+          container.innerHTML = `
+      <iframe 
+        width="100%" 
+        height="315" 
+        src="${url}" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen>
+      </iframe>`;
+          return container;
+        }
+
+        // 2. Jika URL adalah file lokal (.mp4 atau .webp)
+        let el;
+        if (url.includes(".mp4")) {
+          el = document.createElement("video");
+          el.controls = true;
+          if (!isGridItem) el.autoplay = true;
+        } else {
+          el = document.createElement("img");
+        }
+
+        el.src = url;
+        return el;
+      }
+
+      function updateSlider() {
+        const container = document.getElementById("slider-media");
+        container.innerHTML = "";
+
+        const url = currentAlbum[currentIndex];
+        const media = createMediaElement(url, false);
+        container.appendChild(media);
+
+        document.getElementById("slide-counter").innerText =
+          `${currentIndex + 1} / ${currentAlbum.length}`;
+      }
+
+      function changeSlide(direction) {
+        currentIndex += direction;
+        if (currentIndex >= currentAlbum.length) currentIndex = 0;
+        if (currentIndex < 0) currentIndex = currentAlbum.length - 1;
+        updateSlider();
+      }
+
+      function toggleGalleryView() {
+        isGridView = !isGridView;
+        const slider = document.getElementById("modal-slider");
+        const grid = document.getElementById("modal-grid");
+        const btn = document.getElementById("btn-toggle-view");
+
+        document.getElementById("slider-media").innerHTML = "";
+
+        if (isGridView) {
+          slider.style.display = "none";
+          grid.style.display = "block";
+          btn.innerText = "Tampilan Slide";
+          btn.classList.add("active");
+
+          grid.innerHTML = "";
+          currentAlbum.forEach((url) => {
+            let itemDiv = document.createElement("div");
+            itemDiv.className = "grid-item";
+            itemDiv.appendChild(createMediaElement(url, true));
+            grid.appendChild(itemDiv);
+          });
+        } else {
+          grid.style.display = "none";
+          slider.style.display = "flex";
+          btn.innerText = "Lihat Semua";
+          btn.classList.remove("active");
+          updateSlider();
+        }
+      }
+
+      function closeModal() {
+        document.getElementById("album-modal").classList.remove("active");
+        document.body.style.overflow = "auto";
+        document.getElementById("slider-media").innerHTML = "";
+        document.getElementById("modal-grid").innerHTML = "";
+      }
+
+      let isPlaying = false;
+      function toggleMusic() {
+        const audio = document.getElementById("bg-audio");
+        const icon = document.getElementById("music-icon");
+        const text = document.getElementById("music-text");
+
+        if (isPlaying) {
+          audio.pause();
+          icon.innerText = "🔇";
+          text.innerText = "Music Paused";
+          isPlaying = false;
+        } else {
+          audio
+            .play()
+            .catch((e) => console.log("Audio diblokir browser: " + e));
+          icon.innerText = "🎵";
+          text.innerText = "Playing...";
+          isPlaying = true;
+        }
+      }
+
+      const canvas = document.getElementById("particles-canvas");
+      const ctx = canvas.getContext("2d");
+      let particlesArray = [];
+
+      function initParticles() {
+        canvas.width = window.innerWidth;
+        canvas.height = document.querySelector(".hero").offsetHeight;
+
+        class Particle {
+          constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2.5 + 0.5;
+            this.speedY = Math.random() * -0.5 - 0.2;
+            this.opacity = Math.random() * 0.5 + 0.1;
+          }
+          update() {
+            this.y += this.speedY;
+            if (this.y < 0) {
+              this.y = canvas.height;
+              this.x = Math.random() * canvas.width;
+            }
+          }
+          draw() {
+            ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        particlesArray = [];
+        let particleCount = window.innerWidth < 768 ? 50 : 100;
+        for (let i = 0; i < particleCount; i++) {
+          particlesArray.push(new Particle());
+        }
+      }
+
+      function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particlesArray.length; i++) {
+          particlesArray[i].update();
+          particlesArray[i].draw();
+        }
+        requestAnimationFrame(animateParticles);
+      }
+
+      window.addEventListener("resize", initParticles);
+
+      function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+          var windowHeight = window.innerHeight;
+          var elementTop = reveals[i].getBoundingClientRect().top;
+          if (elementTop < windowHeight - 100)
+            reveals[i].classList.add("active");
+        }
+      }
+      window.addEventListener("scroll", reveal);
+
+      initParticles();
+      animateParticles();
+      reveal();
+    </script>
+  </body>
+</html>
